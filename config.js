@@ -23,6 +23,9 @@ const config = {
 
   // File audio (nama file di folder yang sama atau URL eksternal)
   bgMusic: "perahu-kertas.mp3",
+  
+  // Detik mulai lagu (langsung ke reff)
+  musicStartTime: 75,
 
   // Variasi pesan saat meter mencapai 100 persen
   loveMeterMessages: [

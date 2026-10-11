@@ -139,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startPlayback() {
     if (!bgAudio) return;
+    const startTime = config.musicStartTime || 0;
+    bgAudio.currentTime = startTime;
     bgAudio.play().then(() => {
       audioPlaying = true;
       if (musicIcon) musicIcon.textContent = 'Jeda';
@@ -162,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (musicIcon) musicIcon.textContent = 'Putar lagu';
         if (audioBars) audioBars.classList.remove('playing');
       } else {
+        bgAudio.currentTime = config.musicStartTime || bgAudio.currentTime;
         bgAudio.play().then(() => {
           audioPlaying = true;
           if (musicIcon) musicIcon.textContent = 'Jeda';
