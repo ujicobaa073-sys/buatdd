@@ -364,23 +364,30 @@ main {
 .intro-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-1);
+  background: rgba(253, 242, 244, 0.96);
+  backdrop-filter: blur(8px);
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 .intro-overlay.hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .intro-inner {
   text-align: center;
   animation: fadeInUp 0.9s ease;
-  padding: 20px;
+  padding: 36px 28px;
+  background: var(--white);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-soft);
+  max-width: 380px;
+  width: 90%;
 }
 
 .intro-kicker {

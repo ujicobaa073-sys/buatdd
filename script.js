@@ -143,10 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
       audioPlaying = true;
       if (musicIcon) musicIcon.textContent = 'Jeda';
       if (audioBars) audioBars.classList.add('playing');
-    }).catch(() => {
-      // gagal load file, tetap tutup overlay
+    }).catch(err => {
+      console.log('Audio playback error:', err);
     });
     if (introOverlay) introOverlay.classList.add('hidden');
+    triggerBurst();
   }
 
   if (introStart) {
@@ -211,12 +212,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.globalAlpha = Math.max(0, alpha);
     ctx.fillStyle = '#ec4899';
     ctx.beginPath();
-    const half = s / 2;
-    ctx.moveTo(x, y + half);
-    ctx.bezierCurveTo(x, y + half * 0.5, x - half, y - half, x - half, y);
-    ctx.bezierCurveTo(x - half, y + half * 0.5, x, y + half * 0.8, x, y + half);
-    ctx.bezierCurveTo(x, y + half * 0.8, x + half, y + half * 0.5, x + half, y);
-    ctx.bezierCurveTo(x + half, y - half, x, y + half * 0.5, x, y + half);
+    const topCurveHeight = s * 0.3;
+    ctx.moveTo(x, y + topCurveHeight);
+    // Lengkungan kiri atas
+    ctx.bezierCurveTo(x, y, x - s / 2, y, x - s / 2, y + topCurveHeight);
+    // Sisi kiri turun ke lancip bawah
+    ctx.bezierCurveTo(x - s / 2, y + (s + topCurveHeight) / 2, x, y + (s + topCurveHeight) / 1.4, x, y + s);
+    // Sisi kanan naik dari lancip bawah
+    ctx.bezierCurveTo(x, y + (s + topCurveHeight) / 1.4, x + s / 2, y + (s + topCurveHeight) / 2, x + s / 2, y + topCurveHeight);
+    // Lengkungan kanan atas
+    ctx.bezierCurveTo(x + s / 2, y, x, y, x, y + topCurveHeight);
+    ctx.closePath();
     ctx.fill();
     ctx.restore();
   }
