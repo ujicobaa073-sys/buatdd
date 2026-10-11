@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk DD</title>
+  <meta name="description" content="Halaman personal buat DD. Galeri feed, love meter, dan satu surat." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Identity motif: partikel hati terapung -->
+  <canvas id="heartCanvas" aria-hidden="true"></canvas>
+
+  <!-- Audio player: satu-satunya elemen glass kedua -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicToggle" aria-label="Putar atau hentikan lagu">
+      <span class="music-state" id="musicIcon">Putar lagu</span>
+      <span class="music-track" id="musicTrackName">lagu buat DD</span>
+    </button>
+    <div class="audio-bars" id="audioBars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <audio id="bgAudio" loop preload="none"></audio>
+
+  <main>
+    <!-- HERO: focal point adalah nama DD -->
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="hero-kicker">hai</p>
+        <h1 class="hero-name" id="heroName">DD</h1>
+        <p class="hero-line">Halaman ini isinya feed kamu, satu meter iseng, dan satu surat yang belum pernah aku kirim.</p>
+        <a href="#galeri" class="hero-link">Mulai dari galeri</a>
+      </div>
+    </header>
+
+    <!-- GALERI: komposisi horizontal swipe, beda dari seksi lain -->
+    <section class="gallery" id="galeri" aria-labelledby="galeriJudul">
+      <div class="wrap">
+        <h2 id="galeriJudul" class="sec-title">Feed kamu, aku simpan di sini</h2>
+        <p class="sec-note">Geser ke samping, atau pakai tombol panah.</p>
+
+        <div class="carousel" id="carousel">
+          <button class="carousel-arrow prev" id="prevBtn" aria-label="Post sebelumnya">Sebelumnya</button>
+          <div class="carousel-viewport" id="carouselTrack" role="group" aria-label="Galeri postingan Instagram DD">
+            <!-- iframe IG di-inject oleh script.js -->
+          </div>
+          <button class="carousel-arrow next" id="nextBtn" aria-label="Post berikutnya">Berikutnya</button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Navigasi galeri"></div>
+      </div>
+    </section>
+
+    <!-- LOVE METER: satu accent dipakai di sini -->
+    <section class="meter" aria-labelledby="meterJudul">
+      <div class="wrap">
+        <div class="meter-card">
+          <h2 id="meterJudul" class="sec-title">Seberapa sayang, jujur aja</h2>
+          <p class="sec-note">Geser meter. Angkanya cuma iseng, tapi kata-katanya jujur.</p>
+
+          <label for="loveSlider" class="sr-only">Persentase perasaan</label>
+          <input type="range" min="0" max="100" value="50" class="love-slider" id="loveSlider" />
+
+          <p class="meter-value" id="meterValue" aria-live="polite">50 persen</p>
+          <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+          <p class="meter-msg" id="meterText" aria-live="polite">Setengah jalan nih.</p>
+
+          <button class="btn-accent" id="btnMaxLove">Naikin sampai penuh</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SURAT: amplop unfold, komposisi beda lagi -->
+    <section class="letter" aria-labelledby="suratJudul">
+      <div class="wrap">
+        <h2 id="suratJudul" class="sec-title">Satu surat</h2>
+        <p class="sec-note">Isinya bisa aku tulis ulang kapan saja.</p>
+
+        <div class="envelope" id="envelope">
+          <div class="envelope-body">
+            <div class="letter-content" id="letterContent">
+              <!-- isi surat di-inject dari config.js -->
+            </div>
+            <button class="btn-accent" id="openLetterBtn">Buka surat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Dibuat buat <strong id="footerName">DD</strong>. Simpan di browser, taruh di HP, atau kirim langsung.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
