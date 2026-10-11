@@ -1,6 +1,4 @@
-/* script.js - antislop compliant: minimal, precise, no slop comments */
 document.addEventListener('DOMContentLoaded', () => {
-  // Inject config
   const heroName = document.getElementById('heroName');
   const footerName = document.getElementById('footerName');
   if (heroName && config.doiName) heroName.textContent = config.doiName;
@@ -125,7 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Audio player
+  // Intro overlay: klik tombol = interaksi resmi browser, audio pasti jalan
+  const introOverlay = document.getElementById('introOverlay');
+  const introStart = document.getElementById('introStart');
   const bgAudio = document.getElementById('bgAudio');
   const musicToggle = document.getElementById('musicToggle');
   const musicIcon = document.getElementById('musicIcon');
@@ -135,28 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bgAudio && config.bgMusic) {
     bgAudio.src = config.bgMusic;
     bgAudio.volume = 0.5;
-    
-    // Autoplay langsung kalau diizinkan browser
+  }
+
+  function startPlayback() {
+    if (!bgAudio) return;
     bgAudio.play().then(() => {
       audioPlaying = true;
       if (musicIcon) musicIcon.textContent = 'Jeda';
       if (audioBars) audioBars.classList.add('playing');
     }).catch(() => {
-      // Fallback: browser blokir, putar pas klik/sentuh pertama di layar
-      const startAudioOnFirstClick = () => {
-        if (!audioPlaying) {
-          bgAudio.play().then(() => {
-            audioPlaying = true;
-            if (musicIcon) musicIcon.textContent = 'Jeda';
-            if (audioBars) audioBars.classList.add('playing');
-          });
-        }
-        document.removeEventListener('click', startAudioOnFirstClick);
-        document.removeEventListener('touchstart', startAudioOnFirstClick);
-      };
-      document.addEventListener('click', startAudioOnFirstClick, { once: true });
-      document.addEventListener('touchstart', startAudioOnFirstClick, { once: true });
+      // gagal load file, tetap tutup overlay
     });
+    if (introOverlay) introOverlay.classList.add('hidden');
+  }
+
+  if (introStart) {
+    introStart.addEventListener('click', startPlayback);
   }
 
   if (musicToggle && bgAudio) {

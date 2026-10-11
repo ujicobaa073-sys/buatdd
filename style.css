@@ -360,6 +360,52 @@ main {
 .audio-bars span:nth-child(3) { height: 6px; animation-delay: 0.0s; }
 .audio-bars span:nth-child(4) { height: 12px; animation-delay: 0.3s; }
 
+/* INTRO OVERLAY */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-1);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-inner {
+  text-align: center;
+  animation: fadeInUp 0.9s ease;
+  padding: 20px;
+}
+
+.intro-kicker {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.intro-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 72px;
+  color: var(--core);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.intro-note {
+  font-size: 14px;
+  color: var(--text-2);
+  max-width: 320px;
+  margin: 0 auto 28px;
+}
+
 /* FOOTER */
 .footer {
   text-align: center;

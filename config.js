@@ -22,7 +22,7 @@ const config = {
   `,
 
   // File audio (nama file di folder yang sama atau URL eksternal)
-  bgMusic: "Maudy Ayunda - Perahu Kertas _ Lirik Lagu - (320 Kbps).mp3",
+  bgMusic: "perahu-kertas.mp3",
 
   // Variasi pesan saat meter mencapai 100 persen
   loveMeterMessages: [
