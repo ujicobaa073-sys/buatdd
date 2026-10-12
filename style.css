@@ -254,17 +254,29 @@ main {
 }
 
 .carousel-dots button {
-  width: 10px;
-  height: 10px;
+  width: 44px;
+  height: 44px;
   padding: 0;
-  background: var(--bg-3);
+  background: transparent;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-dots button::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-3);
+  border-radius: 50%;
   transition: all 0.2s ease;
 }
 
-.carousel-dots button.active {
+.carousel-dots button.active::before {
   background: var(--core);
   width: 26px;
   border-radius: 999px;
@@ -437,11 +449,24 @@ main {
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
-  .hero-name { font-size: 60px; }
-  .carousel-viewport { height: 460px; }
-  .carousel-arrow.prev { left: 0; }
-  .carousel-arrow.next { right: 0; }
-  .sec-title { font-size: 24px; }
+  .hero { padding: 30px 16px; }
+  .hero-name { font-size: 56px; }
+  .hero-kicker { font-size: 13px; }
+  .hero-line { font-size: 16px; }
+  
+  .carousel-viewport { height: 420px; max-width: 100%; }
+  .carousel-arrow { padding: 8px 14px; font-size: 13px; }
+  
+  .sec-title { font-size: 22px; }
+  .sec-note { font-size: 13px; }
+  
+  .meter { padding: 40px 0; }
+  .meter-card { padding: 28px 20px; }
+  
+  .letter { padding: 40px 0; }
+  .envelope-body { padding: 24px; }
+  
+  .footer { padding: 30px 16px 96px; font-size: 13px; }
 }
 
 /* UTILITY: sr-only for accessibility */
